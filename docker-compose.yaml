@@ -20,6 +20,8 @@ services:
       - ./pg_1_data:/bitnami/postgresql
     env_file:
       - ./pg-1.env
+#    depends_on:
+#     - pg-0
   pgpool:
     image: bitnami/pgpool:4
     ports:
@@ -31,6 +33,8 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+    depends_on:
+      - pg-0
 
   pgadmin:
     image: dpage/pgadmin4:latest 
